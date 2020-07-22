@@ -5,6 +5,8 @@ set extension=.txt
 set INTEXTFILE=%inputname%%extension%
 set OUTTEXTFILE=output_file.txt
 
+break>%OUTTEXTFILE%
+
 for /f "delims=" %%A in ('type "%INTEXTFILE%"') do (
     set string=%%A
     set modified=!string:~0,22!20!!string:~24!
