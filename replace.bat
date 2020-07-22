@@ -1,11 +1,17 @@
-setlocal EnableExtensions EnableDelayedExpansion
-set "INTEXTFILE=file.txt"
-set "OUTTEXTFILE=file_out.txt"
+@echo off
+if not defined in_subprocess (cmd /k set in_subprocess=y ^& %0 %*) & exit )
+
+set /P inputname="Inserisci il nome del file da sostituire: "
+set extension=".txt"
+set INTEXTFILE=%inputname%%extension%
+set OUTTEXTFILE="file_out.txt"
 
 for /f "delims=" %%A in ('type "%INTEXTFILE%"') do (
     set string=%%A
     set modified=!string:~0,22!20!!string:~24!
     echo !modified!>>"%OUTTEXTFILE%"
+    set complete="y"
 )
 
+if complete=="y" (echo "Complete! Check in your folder if there is a file named file_out")
 endlocal
