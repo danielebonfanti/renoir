@@ -9,7 +9,7 @@ break>%OUTTEXTFILE%
 
 for /f "delims=" %%A in ('type "%INTEXTFILE%"') do (
     set string=%%A
-    set modified=!string:~0,22!15!!string:~24!
+    set modified=!string:~0,22!10!!string:~24!
     echo !modified!>>"%OUTTEXTFILE%"
     set complete=y
 )
